@@ -2249,7 +2249,7 @@ section {
 
 @media (max-width: 768px) {
   .hero .info {
-    padding: 0 50px;
+    padding: 0 10px;
   }
 }
 
@@ -2277,7 +2277,7 @@ section {
 
 @media (max-width: 768px) {
   .hero .info h2 {
-    font-size: 36px;
+    font-size: 32px;
   }
 }
 

@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteRule "/$" "/Home.htm" [QSA]
+# RewriteRule "(\w\d)*\.html$" "503.php" [QSA]
+RewriteRule "(\w\d)*\.htm$" "index.html" [QSA]

@@ -1,24 +1,24 @@
 var mWindow;
-var marrMenus = [	["Home", "Home.html", "Home.htm", null],											
-					["Blog", "MailingList/index.php", "Blog.htm", null],								
-					[null, "MailingList/SignUp.php", "SignUp.htm", "Mailing list"],								
-					[null, "MailingList/confirm.php", "Confirm.htm", null],							
-					[null, "MailingList/change.php", "Change.htm", null],								
-					[null, "MailingList/delete.php", "Delete.htm", null],								
-					["Our story", "Story.html", "Story.htm", null],							
-					["Supporters", "Supporters.html", "Supporters.htm", null],						
-					["Events", "Diary/Events.php", "Events.htm", null],					
-					["FAQs", "FAQ.html", "FAQ.htm", null],
-					["Join us", "JoinUs.html", "JoinUs.htm", null],
-					["Contact us", "ContactUs.php", "ContactUs.htm", "Contact"],						
-					["Donate", "Sponsorship/index.php", "Donate.htm", null],						
+var marrMenus = [	["Home", "Home.html", "Home.htm", null, 1],											
+					["Blog", "MailingList/index.php", "Blog.htm", null, 2],								
+					[null, "MailingList/SignUp.php", "SignUp.htm", "Mailing list", null],								
+					[null, "MailingList/confirm.php", "Confirm.htm", null, null],							
+					[null, "MailingList/change.php", "Change.htm", null, null],								
+					[null, "MailingList/delete.php", "Delete.htm", null, null],								
+					["Our story", "Story.html", "Story.htm", null, 1],							
+					["Supporters", "Supporters.html", "Supporters.htm", null, 1],						
+					["Events", "Diary/Events.php", "Events.htm", null, 2],					
+					["FAQs", "FAQ.html", "FAQ.htm", null, 1],
+					["Join us", "JoinUs.html", "JoinUs.htm", null, 3],
+					["Contact us", "ContactUs.php", "ContactUs.htm", "Contact", 1],						
+					["Donate", "Sponsorship/index.php", "Donate.htm", null, 3],						
 //					["Poll", "Poll/index.php", "Poll.htm", "Poll"],									
-					["About us", "AboutUs.html", "AboutUs.htm", null],
-					[null, "Sponsorship/ThankYou.php", "ThankYou.htm", null],									
-					[null, "Sponsorship/Cancel.php", "Cancel.htm", null],								
-					[null, "Committee/Reset.php", "Reset.htm", null],	
-					[null, "Committee/index.php", "Logon.htm", null],
-					[null, "Sample.html", "Sample.htm", null]
+					["About us", "AboutUs.html", "AboutUs.htm", null, 4],
+					[null, "Sponsorship/ThankYou.php", "ThankYou.htm", null, null],									
+					[null, "Sponsorship/Cancel.php", "Cancel.htm", null, null],								
+					[null, "Committee/Reset.php", "Reset.htm", null, null],	
+					[null, "Committee/index.php", "Logon.htm", null, null],
+					[null, "Sample.html", "Sample.htm", null, null]
 				];
 var mstrCaptcha;
 var intPageNo = 0;
@@ -99,7 +99,7 @@ function LoadPage (rstrKey, rstrGet, rboolReload) {
 	LoadPageNumber (intFile, rstrGet, rboolReload);
 }
 function LoadPageNumber(rintFile, rstrGet, rboolReload) {
-	var xhttp = GetXhttp("idPage");
+	var xhttp = GetXhttp("main");
 	xhttp.open("POST", marrMenus[rintFile][1], true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	if (marrMenus[rintFile][1] == "Diary/Events.php")
@@ -119,12 +119,14 @@ function LoadPageNumber(rintFile, rstrGet, rboolReload) {
 		if (marrMenus[i][0]) {
 			var cmdButton = document.getElementById ("idMenu" + i);
 			if (i == rintFile) {
-				cmdButton.className = "MenuSel";
-				cmdButton.disabled = true;
+//				cmdButton.className = "MenuSel";
+//				cmdButton.disabled = true;
+				cmdButton.className = "active";
 			}
 			else {
-				cmdButton.className = "Menu";
-				cmdButton.disabled = false;
+//				cmdButton.className = "Menu";
+//				cmdButton.disabled = false;
+				cmdButton.className = "";
 			}
 		}
 	if (!rboolReload) {
@@ -137,8 +139,8 @@ function LoadPageNumber(rintFile, rstrGet, rboolReload) {
 			'value' : rintFile
 		}
 	);
-	HideMobileDropdown();
-	document.getElementById("idMobileMenu").style.display = "none";
+//	HideMobileDropdown();
+//	document.getElementById("idMobileMenu").style.display = "none";
 }
 function ExpandSection (rDiv1, rDiv2, rFile, rExpand, rContract){
 	var xhttp = GetXhttp(rDiv1);
@@ -177,7 +179,7 @@ function DoDropdown (rDiv, rFile) {
 	}
 }
 function RedoBanner (){
-	var strHtml1 = "";
+/*	var strHtml1 = "";
 	var strHtml2 = "";
 	var intMenuItems = 0;
 	var cintMinWidth = 350;
@@ -191,13 +193,49 @@ function RedoBanner (){
 	var intMenuMax = fltStraightLineLookup (cintMinWidth, cintMaxWidth, cintMinMenu, cintMaxMenu, window.innerWidth);
 	document.getElementById("idIcon").style.width = fltStraightLineLookup (cintMinWidth, cintMaxWidth, cfltMinLogoWidth, cfltMaxLogoWidth, window.innerWidth) + "%";
 	document.getElementById("idBanner").style.width = fltStraightLineLookup (cintMinWidth, cintMaxWidth, cfltMinMenuWidth, cfltMaxMenuWidth, window.innerWidth) + "%";
-//	document.getElementById("idLogon").style.width = fltStraightLineLookup (cintMinWidth, cintMaxWidth, cfltMinLogoWidth, cfltMaxLogoWidth, window.innerWidth) + "%";
+*/
+	var strHtml = "<ul>";
+	var strHtml1 = "<ul>";
+	var strHtml2 = "<ul>";
+	var strHtml3 = "<ul>";
+	var strHtml4 = "<ul>";
 	for (var i = 0;
-	i < marrMenus.length;
-	i++) 
+		i < marrMenus.length;
+		i++) 
 	if (marrMenus[i][0]) {
-		intMenuItems++;
-		if (intMenuItems < intMenuMax)
+//		intMenuItems++;
+		strHtml += 	"	<li		onClick='LoadPageNumber(" + i + ", \"\", false);' "
+				+	"			id='idMenu" + i + "'"
+				+	"			style='cursor:pointer;'>"
+				+				marrMenus[i][0]
+				+	"	</li>";
+		switch (marrMenus[i][4]) {
+			case 1:
+				strHtml1 +=	"	<li		onClick='LoadPageNumber(" + i + ", \"\", false);' "
+						+	"			style='cursor:pointer;'>"
+						+				marrMenus[i][0]
+						+	"	</li>";
+				break;
+			case 2:
+				strHtml2 +=	"	<li		onClick='LoadPageNumber(" + i + ", \"\", false);' "
+						+	"			style='cursor:pointer;'>"
+						+				marrMenus[i][0]
+						+	"	</li>";
+				break;
+			case 3:
+				strHtml3 +=	"	<li		onClick='LoadPageNumber(" + i + ", \"\", false);' "
+						+	"			style='cursor:pointer;'>"
+						+				marrMenus[i][0]
+						+	"	</li>";
+				break;
+			case 4:
+				strHtml4 +=	"	<li		onClick='LoadPageNumber(" + i + ", \"\", false);' "
+						+	"			style='cursor:pointer;'>"
+						+				marrMenus[i][0]
+						+	"	</li>";
+				break;
+		}
+/*		if (intMenuItems < intMenuMax)
 			strHtml1 += "<button type='button'"
 				+	"			onClick='LoadPageNumber(" + i + ", \"\", false);' "
 				+	"			id='idMenu" + i + "'"
@@ -212,8 +250,14 @@ function RedoBanner (){
 				+	"			style='display:block;'>"
 				+				marrMenus[i][0].toUpperCase()
 				+	"	</button>";
+*/				
 	}
-	if (intMenuMax <= 1) {
+	strHtml += "</ul>";
+	strHtml1 += "</ul>";
+	strHtml2 += "</ul>";
+	strHtml3 += "</ul>";
+	strHtml4 += "</ul>";
+/*	if (intMenuMax <= 1) {
 		strHtml1 = "	<img	onClick='ShowDropdown(1);'"
 				+	"			id='idMobileShow'"
 				+	"			class='Menu'" 
@@ -329,6 +373,12 @@ function RedoBanner (){
 	document.getElementById("idMenu").innerHTML = strHtml1;
 	document.getElementById("idPage").style.paddingTop = (document.getElementById("idHeader").offsetHeight + document.getElementById("idHeader").offsetTop * 2) + "px";
 	document.getElementById("idMobileMenu").style.paddingTop = (document.getElementById("idHeader").offsetHeight + document.getElementById("idHeader").offsetTop * 2) + "px";
+*/
+	document.getElementById("navbar").innerHTML = strHtml;	
+	document.getElementById("idFooter1").innerHTML = strHtml1;	
+	document.getElementById("idFooter2").innerHTML = strHtml2;	
+	document.getElementById("idFooter3").innerHTML = strHtml3;	
+	document.getElementById("idFooter4").innerHTML = strHtml4;	
 }
 function MenuTooltip (rstrText) {
 	ctlTooltip = document.getElementById("idTooltip"); 
@@ -1657,25 +1707,22 @@ function InitializeSupporters (rDiv, rarrSupporters) {
 		i < rarrSupporters.length;
 		i++) {
 		if (rarrSupporters[i][2]) 
-			strHtml += "	<a		href='" + rarrSupporters[i][2] + "'"
-					+ "				onMouseOver='SupportersLink(this);'"
-					+ "				onMouseOut='SupportersUnlink(this);'"
-					+ "				target=_blank>"
-					+ "				<img	class=clsSupporter"
+			strHtml += "	<div class='col-3 col-lg-2'>"
+					+ "				<a		href='" + rarrSupporters[i][2] + "'"
+					+ "						target=_blank>"
+					+ "						<img	class='img-fluid supporter'"
+					+ "								src='" + rarrSupporters[i][0] + "'"
+					+ "								alt='" + rarrSupporters[i][3] + "'"
+					+ "						/>"
+					+ "				</a>"
+					+ "		</div>";
+		else
+			strHtml += "	<div class='col-3 col-lg-2'>"
+					+ "				<img	class='img-fluid supporter'"	// In this case it should be a different class, that doesn't cause the cursor or image to change. 
 					+ "						src='" + rarrSupporters[i][0] + "'"
 					+ "						alt='" + rarrSupporters[i][3] + "'"
 					+ "				/>"
-					+ "				<img	class=clsSupporter"
-					+ "						style='display:none;'"
-					+ "						src='" + rarrSupporters[i][1] + "'"
-					+ "						alt='" + rarrSupporters[i][3] + "'"
-					+ "				/>"
-					+ "		</a>";
-		else
-			strHtml += "	<img	src='" + rarrSupporters[i][0] + "'"
-					+ "				alt='" + rarrSupporters[i][3] + "'"
-					+ "				class=clsSupporter"
-					+ "		/>";
+					+ "		</div>";
 	}
 	document.getElementById(rDiv).innerHTML = strHtml;
 }

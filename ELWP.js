@@ -52,7 +52,6 @@ function Initialize () {
 		LoadPageNumber (intFile, location.search, true);
 }
 function GetXhttp(rDiv) {	
-	alert ('in GetXhttp');
 	var xhttp;
 	if (window.XMLHttpRequest)
 		xhttp = new XMLHttpRequest();

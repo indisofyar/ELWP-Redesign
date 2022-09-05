@@ -60,6 +60,7 @@ function GetXhttp(rDiv) {
 	xhttp.onreadystatechange = function () {	
 		if (xhttp.readyState == 4 
 		&& xhttp.status == 200) {
+			alert ("reading state: " + xhttp.readyState + "; status: " + xhttp.status);
 			document.getElementById(rDiv).innerHTML = xhttp.responseText;
 //			RedoBanner();
 			var rexMessage = /\<p\s+class ?\= ?('|"|)(clsError|clsInformation)('|"|)\>\s*([\s\S]*?)\s*\<\/p\>/g;

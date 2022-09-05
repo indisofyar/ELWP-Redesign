@@ -52,6 +52,7 @@ function Initialize () {
 		LoadPageNumber (intFile, location.search, true);
 }
 function GetXhttp(rDiv) {	
+	alert ('in GetXhttp');
 	var xhttp;
 	if (window.XMLHttpRequest)
 		xhttp = new XMLHttpRequest();
@@ -100,8 +101,7 @@ function LoadPage (rstrKey, rstrGet, rboolReload) {
 }
 function LoadPageNumber(rintFile, rstrGet, rboolReload) {
 	var xhttp = GetXhttp("main");
-	alert ("https://indisofyar.github.io/ELWP-Redesign/" + marrMenus[rintFile][1]);
-	xhttp.open("POST", "https://indisofyar.github.io/ELWP-Redesign/" + marrMenus[rintFile][1], true);
+	xhttp.open("POST", marrMenus[rintFile][1], true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	if (marrMenus[rintFile][1] == "Diary/Events.php")
 		rstrGet += "&WindowWidth=" + gintWindowWidth();

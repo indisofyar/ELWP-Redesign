@@ -57,6 +57,7 @@ function GetXhttp(rDiv) {
 		xhttp = new XMLHttpRequest();
 	else
 		xhttp = new ActiveObject("Microsoft.XMLHTTP");
+	alert ('here');
 	xhttp.onreadystatechange = function () {	
 		if (xhttp.readyState == 4 
 		&& xhttp.status == 200) {

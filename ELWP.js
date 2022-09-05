@@ -100,7 +100,7 @@ function LoadPage (rstrKey, rstrGet, rboolReload) {
 }
 function LoadPageNumber(rintFile, rstrGet, rboolReload) {
 	var xhttp = GetXhttp("main");
-	xhttp.open("POST", marrMenus[rintFile][1], true);
+	xhttp.open("POST", "https://indisofyar.github.io/ELWP-Redesign/" + marrMenus[rintFile][1], true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	if (marrMenus[rintFile][1] == "Diary/Events.php")
 		rstrGet += "&WindowWidth=" + gintWindowWidth();

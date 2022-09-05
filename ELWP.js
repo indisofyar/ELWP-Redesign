@@ -99,8 +99,7 @@ function LoadPage (rstrKey, rstrGet, rboolReload) {
 	LoadPageNumber (intFile, rstrGet, rboolReload);
 }
 function LoadPageNumber(rintFile, rstrGet, rboolReload) {
-	alert (marrMenus[rintFile][1]);
-/*	var xhttp = GetXhttp("main");
+	var xhttp = GetXhttp("main");
 	xhttp.open("POST", marrMenus[rintFile][1], true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	if (marrMenus[rintFile][1] == "Diary/Events.php")
@@ -140,7 +139,6 @@ function LoadPageNumber(rintFile, rstrGet, rboolReload) {
 			'value' : rintFile
 		}
 	);
-*/	
 //	HideMobileDropdown();
 //	document.getElementById("idMobileMenu").style.display = "none";
 }

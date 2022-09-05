@@ -99,6 +99,7 @@ function LoadPage (rstrKey, rstrGet, rboolReload) {
 	LoadPageNumber (intFile, rstrGet, rboolReload);
 }
 function LoadPageNumber(rintFile, rstrGet, rboolReload) {
+	alert (rintFile);
 	var xhttp = GetXhttp("main");
 	xhttp.open("POST", marrMenus[rintFile][1], true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");

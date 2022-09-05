@@ -194,7 +194,6 @@ function RedoBanner (){
 	document.getElementById("idIcon").style.width = fltStraightLineLookup (cintMinWidth, cintMaxWidth, cfltMinLogoWidth, cfltMaxLogoWidth, window.innerWidth) + "%";
 	document.getElementById("idBanner").style.width = fltStraightLineLookup (cintMinWidth, cintMaxWidth, cfltMinMenuWidth, cfltMaxMenuWidth, window.innerWidth) + "%";
 */
-	alert ('here');
 	var strHtml = "<ul>";
 	var strHtml1 = "<ul>";
 	var strHtml2 = "<ul>";
